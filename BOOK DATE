@@ -1,0 +1,91 @@
+import React from 'react';
+
+const Heading = () => (
+  <h1 style={styles.heading}>Customize Your Requirements</h1>
+);
+
+const BedroomBathroomSelector = () => {
+  return (
+    <div style={styles.mainContainer}>
+      <Heading />
+      <div style={styles.container}>
+        <div>
+          <p>Number Of Bedrooms</p>
+          <div style={styles.optionsContainer}>
+            {['Studio', 1, 2, 3, 4, 5].map((room) => (
+              <div key={room} style={styles.option}>{room}</div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p>Number Of Bathrooms</p>
+          <div style={styles.optionsContainer}>
+            {[1, 2, 3, 4, 5].map((bath) => (
+              <div key={bath} style={styles.option}>{bath}</div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p>Service</p>
+          <input type="text" placeholder="Add Service" style={styles.input} />
+        </div>
+      </div>
+      <button style={styles.button}>Next</button>
+    </div>
+  );
+};
+
+const styles = {
+  mainContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '20px',
+  },
+  container: {
+    width: '601px',
+    height: '344px',
+    borderRadius: '10px',
+    background: '#FFFFFF',
+    padding: '20px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+  },
+  heading: {
+    textAlign: 'center',
+    color: '#0B0C36',
+    fontSize: '32px',
+    fontWeight: 'bold'
+  },
+  optionsContainer: {
+    display: 'flex',
+    gap: '10px',
+    marginBottom: '20px',
+  },
+  option: {
+    padding: '10px 20px',
+    border: '1px solid #D3D3D3',
+    borderRadius: '8px',
+    cursor: 'pointer',
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #D3D3D3',
+    borderRadius: '8px',
+  },
+  button: {
+    width: '266px',
+    height: '50px',
+    borderRadius: '12px',
+    background: '#1DC5C4',
+    color: '#FFFFFF',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '18px',
+    fontWeight: 'bold'
+  }
+};
+
+export default BedroomBathroomSelector;
