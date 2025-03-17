@@ -1,0 +1,154 @@
+import React, { useState } from 'react';
+
+const Heading: React.FC = () => (
+  <h1 style={styles.heading}>Customize Your Requirements</h1>
+);
+
+const BedroomBathroomSelector: React.FC = () => {
+  const [selectedBedroom, setSelectedBedroom] = useState<string | number>('Studio');
+  const [selectedBathroom, setSelectedBathroom] = useState<number>(1);
+  const [serviceCount, setServiceCount] = useState<number>(0);
+  const [serviceText, setServiceText] = useState<string>('');
+
+  const handlePlus = () => setServiceCount(serviceCount + 1);
+  const handleMinus = () => setServiceCount(serviceCount > 0 ? serviceCount - 1 : 0);
+
+  return (
+    <div style={styles.mainContainer}>
+      <Heading />
+      <div style={styles.container}>
+        <div>
+          <p>Number Of Bedrooms</p>
+          <div style={styles.optionsContainer}>
+            {['Studio', 1, 2, 3, 4, 5].map((room) => (
+              <div 
+                key={room.toString()} 
+                style={{
+                  ...styles.option,
+                  backgroundColor: selectedBedroom === room ? '#1DC5C4' : 'transparent',
+                  color: selectedBedroom === room ? '#FFFFFF' : '#000'
+                }}
+                onClick={() => setSelectedBedroom(room)}
+              >
+                {room}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p>Number Of Bathrooms</p>
+          <div style={styles.optionsContainer}>
+            {[1, 2, 3, 4, 5].map((bath) => (
+              <div 
+                key={bath.toString()} 
+                style={{
+                  ...styles.option,
+                  backgroundColor: selectedBathroom === bath ? '#1DC5C4' : 'transparent',
+                  color: selectedBathroom === bath ? '#FFFFFF' : '#000'
+                }}
+                onClick={() => setSelectedBathroom(bath)}
+              >
+                {bath}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={styles.serviceContainer}>
+          <div style={styles.serviceInputContainer}>
+            <p>Service</p>
+            <input 
+              type="text" 
+              placeholder="Add Service" 
+              value={serviceText}
+              onChange={(e) => setServiceText(e.target.value)}
+              style={styles.input} 
+            />
+          </div>
+          <div style={styles.buttonContainer}>
+            <button style={styles.plusMinusButton} onClick={handlePlus}>+</button>
+            <button style={styles.plusMinusButton} onClick={handleMinus}>-</button>
+          </div>
+        </div>
+      </div>
+      <button style={styles.button}>Next</button>
+    </div>
+  );
+};
+
+const styles: { [key: string]: React.CSSProperties } = {
+  mainContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '20px',
+  },
+  container: {
+    width: '601px',
+    height: '344px',
+    borderRadius: '10px',
+    background: '#FFFFFF',
+    padding: '20px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+  },
+  heading: {
+    textAlign: 'center',
+    color: '#0B0C36',
+    fontSize: '32px',
+    fontWeight: 'bold'
+  },
+  optionsContainer: {
+    display: 'flex',
+    gap: '10px',
+    marginBottom: '20px',
+  },
+  option: {
+    padding: '10px 20px',
+    border: '1px solid #D3D3D3',
+    borderRadius: '8px',
+    cursor: 'pointer',
+  },
+  serviceContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+  },
+  serviceInputContainer: {
+    flex: 1
+  },
+  buttonContainer: {
+    display: 'flex',
+    gap: '5px'
+  },
+  plusMinusButton: {
+    width: '40px',
+    height: '40px',
+    borderRadius: '8px',
+    background: '#1DC5C4',
+    color: '#FFFFFF',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '18px',
+    fontWeight: 'bold'
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #D3D3D3',
+    borderRadius: '8px',
+  },
+  button: {
+    width: '266px',
+    height: '50px',
+    borderRadius: '12px',
+    background: '#1DC5C4',
+    color: '#FFFFFF',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '18px',
+    fontWeight: 'bold'
+  }
+};
+
+export default BedroomBathroomSelector;
