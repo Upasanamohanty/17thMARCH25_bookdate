@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+
+const BedroomBathroomSelector = () => {
+  const [selectedBedroom, setSelectedBedroom] = useState('Studio');
+  const [selectedBathroom, setSelectedBathroom] = useState(4);
+
+  const bedroomOptions = ['Studio', 1, 2, 3, 4, 5];
+  const bathroomOptions = [1, 2, 3, 4, 5];
+
+  return (
+    <div style={styles.container}>
+      <div>
+        <p>Number Of Bedrooms</p>
+        <div style={styles.optionsContainer}>
+          {bedroomOptions.map((room) => (
+            <div
+              key={room}
+              style={room === selectedBedroom ? styles.selectedOption : styles.option}
+              onClick={() => setSelectedBedroom(room)}
+            >
+              {room}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p>Number Of Bathrooms</p>
+        <div style={styles.optionsContainer}>
+          {bathroomOptions.map((bath) => (
+            <div
+              key={bath}
+              style={bath === selectedBathroom ? styles.selectedOption : styles.option}
+              onClick={() => setSelectedBathroom(bath)}
+            >
+              {bath}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p>Service</p>
+        <input type="text" placeholder="Add Service" style={styles.input} />
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    width: '601px',
+    height: '344px',
+    position: 'absolute',
+    top: '361px',
+    left: '419px',
+    borderRadius: '10px',
+    background: '#FFFFFF',
+    padding: '20px',
+    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
+  },
+  optionsContainer: {
+    display: 'flex',
+    gap: '10px',
+    marginBottom: '20px',
+  },
+  option: {
+    padding: '10px 20px',
+    border: '1px solid #D3D3D3',
+    borderRadius: '8px',
+    cursor: 'pointer',
+  },
+  selectedOption: {
+    padding: '10px 20px',
+    border: '2px solid #A855F7',
+    borderRadius: '8px',
+    backgroundColor: '#F3E8FF',
+    color: '#A855F7',
+    cursor: 'pointer',
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    border: '1px solid #D3D3D3',
+    borderRadius: '8px',
+  },
+};
+
+export default BedroomBathroomSelector;
